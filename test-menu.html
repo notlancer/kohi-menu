@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf6f0;
+    --dark: #1a1611;
+    --warm: #c8a96e;
+    --muted: #7a6e62;
+    --line: #e0d8cc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    margin-bottom: 64px;
+    position: relative;
+  }
+
+  .logo-line {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .logo-line::before,
+  .logo-line::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--warm);
+    max-width: 120px;
+  }
+
+  .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--warm);
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 8vw, 68px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .tagline {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+
+  /* SECTION */
+  section {
+    margin-bottom: 56px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .section-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* MENU ITEM */
+  .item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+
+  .item:last-child {
+    border-bottom: none;
+  }
+
+  .item-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .item-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    grid-column: 1;
+    grid-row: 2;
+    font-weight: 300;
+    max-width: 520px;
+  }
+
+  .item-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--warm);
+    grid-column: 2;
+    grid-row: 1;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* DRINKS — compact layout */
+  .drinks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .drink-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    gap: 12px;
+  }
+
+  .drinks-grid .drink-item:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  .drink-item:nth-child(odd) {
+    padding-right: 28px;
+    border-right: 1px solid var(--line);
+  }
+  .drink-item:nth-child(even) {
+    padding-left: 28px;
+  }
+
+  .drink-name {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+  }
+
+  .drink-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--warm);
+    white-space: nowrap;
+  }
+
+  /* POUR OVER note */
+  .pour-over-note {
+    font-size: 12.5px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* TEA sub-section */
+  .tea-section {
+    margin-top: 36px;
+  }
+
+  .tea-section .section-header {
+    margin-bottom: 20px;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+
+  footer p {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: white; }
+    .page { padding: 30px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="logo-line">
+      <span class="brand">Café</span>
+    </div>
+    <h1>Menu</h1>
+    <p class="tagline">Morning &amp; All Day</p>
+  </header>
+
+  <!-- FOOD -->
+  <section id="food">
+    <div class="section-header"><h2>Food</h2></div>
+
+    <div class="item">
+      <div class="item-name">Brioche Tamago Sandwich</div>
+      <div class="item-price">39</div>
+      <div class="item-desc">Soft brioche bun with fluffy tamago omelette, Japanese mayo, and pickled cucumber.</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Avocado Sandwich</div>
+      <div class="item-price">49</div>
+      <div class="item-desc">Brioche or sourdough. Avocado, tomato, pickled cucumbers, microgreens, spicy mayo, and gouda.</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Silky Tornado Eggs</div>
+      <div class="item-price">59</div>
+      <div class="item-desc">Silky tornado-style eggs with sourdough, pepper cream cheese, tomato jam, and blanched kale.</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Yogurt Bowl</div>
+      <div class="item-price">47</div>
+      <div class="item-desc">Greek yogurt with homemade granola, mango, berries, and agave syrup.</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Green Veggie Salad</div>
+      <div class="item-price">46</div>
+      <div class="item-desc">Fresh greens with broccoli, asparagus, pickled okra, cucumbers, grapes, and sesame dressing.</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Citrus Quinoa Salad</div>
+      <div class="item-price">46</div>
+      <div class="item-desc">Quinoa with spinach, cucumbers, pickled daikon, avocado, and orange–miso dressing.</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">French Toast</div>
+      <div class="item-price">52</div>
+      <div class="item-desc">Soft brioche French toast with coffee cream, caramel, pecans, and raspberries.</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Dorayaki Yuzu Pancakes</div>
+      <div class="item-price">59</div>
+      <div class="item-desc">Fluffy dorayaki pancakes with yuzu–white chocolate yogurt cream, pistachio, and black sesame.</div>
+    </div>
+
+    <div class="item">
+      <div class="item-name">Dorayaki Maple Pancakes</div>
+      <div class="item-price">59</div>
+      <div class="item-desc">Fluffy dorayaki pancakes with maple syrup, butter, and berries.</div>
+    </div>
+
+  </section>
+
+  <!-- DRINKS -->
+  <section id="drinks">
+    <div class="section-header"><h2>Drinks</h2></div>
+
+    <div class="drinks-grid">
+      <div class="drink-item"><span class="drink-name">Espresso</span><span class="drink-price">14</span></div>
+      <div class="drink-item"><span class="drink-name">Iced Espresso</span><span class="drink-price">14</span></div>
+      <div class="drink-item"><span class="drink-name">Americano</span><span class="drink-price">16</span></div>
+      <div class="drink-item"><span class="drink-name">Cold Americano</span><span class="drink-price">16</span></div>
+      <div class="drink-item"><span class="drink-name">Cortado</span><span class="drink-price">15</span></div>
+      <div class="drink-item"><span class="drink-name">Macchiato</span><span class="drink-price">15</span></div>
+      <div class="drink-item"><span class="drink-name">Flat White</span><span class="drink-price">17</span></div>
+      <div class="drink-item"><span class="drink-name">Cappuccino</span><span class="drink-price">18</span></div>
+      <div class="drink-item"><span class="drink-name">Iced Latte</span><span class="drink-price">18</span></div>
+      <div class="drink-item"><span class="drink-name">Big Cappuccino</span><span class="drink-price">20</span></div>
+      <div class="drink-item"><span class="drink-name">Batch Brew</span><span class="drink-price">16</span></div>
+      <div class="drink-item"><span class="drink-name">Cold Brew</span><span class="drink-price">20</span></div>
+    </div>
+
+    <p class="pour-over-note">Pour Over — price depends on the beans &nbsp;(30–60)</p>
+
+    <div class="tea-section">
+      <div class="section-header"><h2>Tea &amp; Japanese Beverages</h2></div>
+      <div class="drinks-grid">
+        <div class="drink-item"><span class="drink-name">Matcha Cold / Hot / Tonic</span><span class="drink-price">26</span></div>
+        <div class="drink-item"><span class="drink-name">Hojicha Cold / Hot / Tea</span><span class="drink-price">24</span></div>
+        <div class="drink-item"><span class="drink-name">Sencha Ariake</span><span class="drink-price">22</span></div>
+        <div class="drink-item"><span class="drink-name">Golden Yunnan</span><span class="drink-price">22</span></div>
+        <div class="drink-item"><span class="drink-name">Green Earl Grey</span><span class="drink-price">22</span></div>
+        <div class="drink-item"><span class="drink-name">Detox</span><span class="drink-price">22</span></div>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>All prices in ILS &nbsp;·&nbsp; Menu subject to change</p>
+  </footer>
+
+</div>
+</body>
+</html>
